@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:drawable="@drawable/ic_douban">
+        <target
+            android:animation="@animator/douban_animator"
+            android:name="path"/>
+        <target
+            android:animation="@animator/douban_animator"
+            android:name="path2"/>
+        <target
+            android:animation="@animator/douban_animator"
+            android:name="path3"/>
+</animated-vector>

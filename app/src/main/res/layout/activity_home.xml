@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/theme_bg">
+            <com.hicetech.demodouban.commonality.view.NoScrollViewPager
+                android:id="@+id/vp_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    <eu.long1.spacetablayout.SpaceTabLayout
+        android:id="@+id/spaceTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:number_of_tabs="three"
+        app:starting_position="one"
+        app:tab_color="@color/tab_color"
+        app:button_color="@color/button_color"
+        app:text_color="#61FFFFFF"
+        app:icon_one="@drawable/ic_tab_movie"
+        app:icon_two="@drawable/ic_tab_forum"
+        app:icon_three="@drawable/ic_tab_me"
+        app:text_one="Movie"
+        app:text_two="Forum"
+        app:text_three="Mine"
+        />
+
+
+
+</RelativeLayout>

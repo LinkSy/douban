@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //标题字体大小
+    <dimen name="title_size">16sp</dimen>
+    //其他字体大小
+    <dimen name="text_size">13sp</dimen>
+</resources>

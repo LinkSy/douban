@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    //随机背景颜色
+    <integer-array name="random_bg_color">
+        <item>@color/random_bg_color</item>
+        <item>@color/random_bg_color2</item>
+        <item>@color/random_bg_color3</item>
+        <item>@color/random_bg_color4</item>
+        <item>@color/random_bg_color5</item>
+    </integer-array>
+
+</resources>

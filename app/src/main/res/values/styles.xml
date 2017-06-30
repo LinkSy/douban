@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    //电影标题风格
+    <style name="Movie_title_Style">
+        <item name="android:textColor">@color/movie_title_color</item>
+        <item name="android:textSize">@dimen/title_size</item>
+    </style>
+    //排名风格
+    <style name="Movie_rank_style" parent="Movie_title_Style">
+        <item name="android:textColor">@color/movie_rank_color</item>
+        <item name="android:textStyle">italic|bold</item>
+    </style>
+    //其他字体分各个
+    <style name="Movie_else_Style">
+        <item name="android:textColor">@color/movie_else_color</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/theme_bg"
+    tools:context="com.hicetech.demodouban.MainActivity">
+
+    <com.cleveroad.androidmanimation.LoadingAnimationView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/animation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        app:lav_backgroundColor="@android:color/white"
+        app:lav_firstColor="@color/google_red"
+        app:lav_secondColor="@color/google_green"
+        app:lav_thirdColor="@color/google_blue"
+        app:lav_fourthColor="@color/google_yellow"
+        app:lav_speedCoefficient="1.0"
+        />
+    <TextView
+        android:clickable="true"
+        android:id="@+id/tv_time"
+        android:layout_margin="10dp"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/welcome_tv_bg"
+        android:text="5秒"
+        android:gravity="center"
+        android:textColor="@color/text_color"
+        />
+
+</FrameLayout>
