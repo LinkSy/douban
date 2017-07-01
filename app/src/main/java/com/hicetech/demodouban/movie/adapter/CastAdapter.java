@@ -32,26 +32,28 @@ public class CastAdapter extends BaseMultiItemQuickAdapter<Moviedetail.CastsBean
 
     @Override
     protected void convert(BaseViewHolder viewHolder, Moviedetail.CastsBean castsBean) {
+        String url = castsBean.getAvatars().getSmall();
+        String url_null = "http://img1.juimg.com/141021/330794-14102112262527.jpg";
         switch (viewHolder.getItemViewType()){
             case Moviedetail.CastsBean.NULL:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,castsBean.getAvatars().getSmall(),imageView,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView,null);
                 break;
             case Moviedetail.CastsBean.DOUBLE:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView2 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,castsBean.getAvatars().getSmall(),imageView2,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView2,null);
                 break;
             case Moviedetail.CastsBean.LEFT:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView3 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,castsBean.getAvatars().getSmall(),imageView3,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView3,null);
                 break;
             case Moviedetail.CastsBean.RIGHT:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView4 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,castsBean.getAvatars().getSmall(),imageView4,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView4,null);
                 break;
         }
 

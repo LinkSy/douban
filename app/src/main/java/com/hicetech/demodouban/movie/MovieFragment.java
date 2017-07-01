@@ -138,7 +138,7 @@ public class MovieFragment extends BaseFragment {
                                 Log.d(TAG,index+"");
                                 Bundle bundle = new Bundle();
                                 bundle.putString("Movie_id",datas.get(position).getId());
-                                bundle.putString("Movie_top",position+"");
+                                bundle.putString("Movie_top",position+1+"");
                                 openActivity(MoiveDetailActivity.class,bundle);
 
                             }

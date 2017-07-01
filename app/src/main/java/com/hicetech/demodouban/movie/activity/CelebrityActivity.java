@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,8 @@ import com.hicetech.demodouban.commonality.utils.ImageUtils;
 import com.hicetech.demodouban.movie.adapter.CelebrityAdapter;
 import com.hicetech.demodouban.movie.module.Celebrity;
 import com.hicetech.demodouban.network.NetWork;
+
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,7 +66,11 @@ public class CelebrityActivity extends Activity {
     CardView cvCelebrity;
 
     CelebrityAdapter mAapter;
-
+    @BindView(R.id.sv_movie_celebrity)
+    NestedScrollView svMovieCelebrity;
+    @BindView(R.id.ll_bg)
+    LinearLayout llBg;
+    private int[] random_color;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +81,9 @@ public class CelebrityActivity extends Activity {
         celebrity_id = getIntent().getStringExtra("celebrity_id");
         mAapter = new CelebrityAdapter(getApplicationContext());
         rvCelebrity.setLayoutManager(new LinearLayoutManager(this));
+        random_color = getResources().getIntArray(R.array.random_bg_color);
+        getBGcolor();
+
         getHttpData();
 
     }
@@ -102,23 +112,24 @@ public class CelebrityActivity extends Activity {
                         tvCelebrityNameEn.setText(celebrity.getName_en());
                         //获得又名
                         String aka_en = "";
-                        for (int i = 0; i <celebrity.getAka_en().size() ; i++) {
-                            if (i!=(celebrity.getAka_en().size()-1)){
-                                aka_en+=celebrity.getAka_en().get(i)+"/";
-                            }else {
-                                aka_en+=celebrity.getAka_en().get(i);
+                        for (int i = 0; i < celebrity.getAka_en().size(); i++) {
+                            if (i != (celebrity.getAka_en().size() - 1)) {
+                                aka_en += celebrity.getAka_en().get(i) + "/";
+                            } else {
+                                aka_en += celebrity.getAka_en().get(i);
                             }
                         }
                         tvCelebrityNameAka.setText(aka_en);
 
                         tvGender.setText(celebrity.getGender());
                         tvCelebrityBornPlace.setText(celebrity.getBorn_place());
-                        ImageUtils.setImgShowEP(getApplicationContext(),celebrity.getAvatars().getMedium(),ivCelebrity,null);
-
+                        ImageUtils.setImgShowEP(getApplicationContext(), celebrity.getAvatars().getMedium(), ivCelebrity, null);
 
 
                         mAapter.setNewData(celebrity.getWorks());
                         rvCelebrity.setAdapter(mAapter);
+                        llBg.setVisibility(View.GONE);
+
                         mAapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -131,5 +142,13 @@ public class CelebrityActivity extends Activity {
                 });
 
 
+    }
+
+    //随机背景颜色
+    public void getBGcolor() {
+        Random random = new Random();
+        int color = random.nextInt(5);
+        svMovieCelebrity.setBackgroundColor(random_color[color]);
+        llMovieTitle.setBackgroundColor(random_color[color]);
     }
 }

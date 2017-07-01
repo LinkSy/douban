@@ -35,7 +35,14 @@
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
             <android.support.v4.widget.NestedScrollView
+                android:id="@+id/sv_movie_celebrity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -156,9 +163,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_celebrity"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 />
             </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
+                <LinearLayout
+                    android:id="@+id/ll_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/button_color">
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pb_movie"
+                        style="@style/SpinKitView.Large.ThreeBounce"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        app:SpinKit_Color="@color/pb_color" />
+                </LinearLayout>
+            </FrameLayout>
 
 </LinearLayout>
