@@ -44,6 +44,8 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+
+
     private int getCount(){
         time--;
         if (time==0){

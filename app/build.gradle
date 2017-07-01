@@ -49,5 +49,7 @@ dependencies {
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
     //事件工具
     compile 'org.greenrobot:eventbus:3.0.0'
+    //Tablayout
+    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     testCompile 'junit:junit:4.12'
 }

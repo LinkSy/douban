@@ -1,4 +1,4 @@
-package com.hicetech.demodouban.Home;
+package com.hicetech.demodouban.forum;
 
 
 import com.hicetech.demodouban.R;
@@ -9,6 +9,8 @@ import com.hicetech.demodouban.commonality.base.BaseFragment;
  */
 
 public class ForumFragment extends BaseFragment {
+
+
     @Override
     public int getLayout() {
         return R.layout.fragment_forum;

@@ -11,5 +11,22 @@
         <item>@color/random_bg_color4</item>
         <item>@color/random_bg_color5</item>
     </integer-array>
-
+    //电影种类
+    <string-array name="movie_subject">
+        <item>in_theaters</item>
+        <item>coming_soon</item>
+        <item>top</item>
+        <item>weekly</item>
+        <item>us_box</item>
+        <item>new_movies</item>
+    </string-array>
+    //电影类型题目
+    <string-array name="movie_title">
+        <item>正在热映</item>
+        <item>即将上映</item>
+        <item>top250</item>
+        <item>口碑榜</item>
+        <item>北美票房榜</item>
+        <item>新片榜</item>
+    </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package com.hicetech.demodouban.movie.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -32,7 +33,16 @@ public class CastAdapter extends BaseMultiItemQuickAdapter<Moviedetail.CastsBean
 
     @Override
     protected void convert(BaseViewHolder viewHolder, Moviedetail.CastsBean castsBean) {
-        String url = castsBean.getAvatars().getSmall();
+        String url ;
+        if (castsBean.getAvatars()==null){
+                return;
+        }else {
+            url = castsBean.getAvatars().getSmall();
+        }
+        if (TextUtils.isEmpty(url)){
+            return;
+        }
+
         String url_null = "http://img1.juimg.com/141021/330794-14102112262527.jpg";
         switch (viewHolder.getItemViewType()){
             case Moviedetail.CastsBean.NULL:

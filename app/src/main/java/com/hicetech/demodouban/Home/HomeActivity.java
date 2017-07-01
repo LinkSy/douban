@@ -9,6 +9,7 @@ import android.view.Window;
 
 import com.hicetech.demodouban.R;
 import com.hicetech.demodouban.commonality.view.NoScrollViewPager;
+import com.hicetech.demodouban.forum.ForumFragment;
 import com.hicetech.demodouban.mine.MineFragment;
 import com.hicetech.demodouban.movie.MovieFragment;
 

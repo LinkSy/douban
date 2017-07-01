@@ -16,8 +16,8 @@ import rx.Observable;
  */
 
 public interface DoubanApi {
-    @GET("/v2/movie/top250")
-    Observable<Movie> getMovie(@Query("start") int start, @Query("count") int count);
+    @GET("/v2/movie/{subject}")
+    Observable<Movie> getMovie(@Path("subject")String subject, @Query("start") int start, @Query("count") int count);
 
     @GET("/v2/movie/subject/{id}")
     Observable<Moviedetail> getMovieDetail(@Path("id") String id);
