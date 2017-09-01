@@ -79,7 +79,7 @@ public class CelebrityActivity extends Activity {
         setContentView(R.layout.activity_celebrity);
         ButterKnife.bind(this);
         celebrity_id = getIntent().getStringExtra("celebrity_id");
-        mAapter = new CelebrityAdapter(getApplicationContext());
+        mAapter = new CelebrityAdapter();
         rvCelebrity.setLayoutManager(new LinearLayoutManager(this));
         random_color = getResources().getIntArray(R.array.random_bg_color);
         getBGcolor();
@@ -123,7 +123,7 @@ public class CelebrityActivity extends Activity {
 
                         tvGender.setText(celebrity.getGender());
                         tvCelebrityBornPlace.setText(celebrity.getBorn_place());
-                        ImageUtils.setImgShowEP(getApplicationContext(), celebrity.getAvatars().getMedium(), ivCelebrity, null);
+                        ImageUtils.setImgShowEP(getApplicationContext(), celebrity.getAvatars().getMedium(), ivCelebrity);
 
 
                         mAapter.setNewData(celebrity.getWorks());
@@ -133,7 +133,7 @@ public class CelebrityActivity extends Activity {
                         mAapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                                Intent intent = new Intent(CelebrityActivity.this, MoiveDetailActivity.class);
+                                Intent intent = new Intent(CelebrityActivity.this, MovieDetailActivity.class);
                                 intent.putExtra("Movie_id", celebrity.getWorks().get(position).getSubject().getId());
                                 startActivity(intent);
                             }

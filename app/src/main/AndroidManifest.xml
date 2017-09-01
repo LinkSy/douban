@@ -20,7 +20,7 @@
 
         </activity>
         //电影详情
-        <activity android:name=".movie.activity.MoiveDetailActivity"/>
+        <activity android:name=".movie.activity.MovieDetailActivity"/>
         //名人详情
         <activity android:name=".movie.activity.CelebrityActivity"/>
     </application>

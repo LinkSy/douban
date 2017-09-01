@@ -44,7 +44,7 @@ import static com.hicetech.demodouban.R.id.tv_top;
  * Created by Administrator on 2017/6/28.
  */
 
-public class MoiveDetailActivity extends Activity {
+public class MovieDetailActivity extends Activity {
     private static String movie_id;//电影ID
     private static String movie_top;//电影排名
     @BindView(tv_top)
@@ -162,14 +162,14 @@ public class MoiveDetailActivity extends Activity {
                         //星星
                         getRank(llDot, (float) moviedetail.getRating().getAverage());
                         String url = moviedetail.getImages().getMedium();
-                        ImageUtils.setImgShowEP(getApplicationContext(), url, ivMovie, null);
+                        ImageUtils.setImgShowEP(getApplicationContext(), url, ivMovie);
                         //设置适配器
                         mAdapter.setNewData(getCasts(moviedetail));
                         llBg.setVisibility(View.GONE);
                         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                                Intent intent = new Intent(MoiveDetailActivity.this,CelebrityActivity.class);
+                                Intent intent = new Intent(MovieDetailActivity.this,CelebrityActivity.class);
                                 intent.putExtra("celebrity_id",datas.get(position).getId());
                                 startActivity(intent);
                             }

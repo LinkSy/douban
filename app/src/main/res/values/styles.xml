@@ -26,5 +26,15 @@
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 
+    <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
+        <!-- 改变指示器下标的颜色 -->
+        <item name="tabIndicatorColor">#FF82AC</item>
+        <!-- 选中字体的颜色 -->
+        <item name="tabSelectedTextColor">#FF9D9D</item>
+        <!-- 未选中字体的颜色 -->
+        <item name="tabTextColor">#333333</item>
 
+
+
+    </style>
 </resources>

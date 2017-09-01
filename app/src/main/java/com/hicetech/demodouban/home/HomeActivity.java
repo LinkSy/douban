@@ -1,13 +1,17 @@
 package com.hicetech.demodouban.home;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.hicetech.demodouban.R;
+import com.hicetech.demodouban.commonality.utils.SystemStatusManager;
 import com.hicetech.demodouban.commonality.view.NoScrollViewPager;
 import com.hicetech.demodouban.forum.ForumFragment;
 import com.hicetech.demodouban.mine.MineFragment;
@@ -35,10 +39,17 @@ public class HomeActivity extends FragmentActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去除标题栏
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//标题栏就没有了。
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+            SystemStatusManager tintManager = new SystemStatusManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.movie_bg_color);//通知栏所需颜色
+        }
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         //初始化 Fragment
+        vpHome.setIsCanScroll(false);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MovieFragment());
         fragments.add(new ForumFragment());
@@ -63,5 +74,16 @@ public class HomeActivity extends FragmentActivity {
         }
         return false;
     }
-
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
 }

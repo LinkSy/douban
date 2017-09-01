@@ -14,7 +14,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.hicetech.demodouban.R;
 import com.hicetech.demodouban.commonality.base.BaseFragment;
-import com.hicetech.demodouban.movie.activity.MoiveDetailActivity;
+import com.hicetech.demodouban.movie.activity.MovieDetailActivity;
 import com.hicetech.demodouban.movie.adapter.MovieAdapter;
 import com.hicetech.demodouban.movie.module.Movie;
 import com.hicetech.demodouban.network.NetWork;
@@ -61,7 +61,7 @@ public class CategoryFragment extends BaseFragment {
         View view = inflater.inflate(getLayout(), container, false);
         ButterKnife.bind(this, view);
         datas = new ArrayList<>();
-        mAdapter = new MovieAdapter(getContext());
+        mAdapter = new MovieAdapter();
         mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMovie.setAdapter(mAdapter);
@@ -138,13 +138,13 @@ public class CategoryFragment extends BaseFragment {
                         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                                //EventBus.getDefault().post(new MoiveDetailActivity());
+                                //EventBus.getDefault().post(new MovieDetailActivity());
                                 int index = position%10 ;
                                 Log.d(TAG,index+"");
                                 Bundle bundle = new Bundle();
                                 bundle.putString("Movie_id",datas.get(position).getId());
                                 bundle.putString("Movie_top",position+1+"");
-                                openActivity(MoiveDetailActivity.class,bundle);
+                                openActivity(MovieDetailActivity.class,bundle);
 
                             }
                         });

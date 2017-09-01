@@ -20,7 +20,7 @@
         android:background="@color/theme_bg"
         >
 
-        <com.facebook.drawee.view.SimpleDraweeView
+        <ImageView
             android:id="@+id/sdv_alt"
             android:layout_width="64dp"
             android:layout_height="96dp"/>

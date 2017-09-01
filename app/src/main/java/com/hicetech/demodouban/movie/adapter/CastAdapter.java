@@ -48,22 +48,22 @@ public class CastAdapter extends BaseMultiItemQuickAdapter<Moviedetail.CastsBean
             case Moviedetail.CastsBean.NULL:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView);
                 break;
             case Moviedetail.CastsBean.DOUBLE:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView2 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView2,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView2);
                 break;
             case Moviedetail.CastsBean.LEFT:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView3 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView3,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView3);
                 break;
             case Moviedetail.CastsBean.RIGHT:
                 viewHolder.setText(R.id.tv_name,castsBean.getName()!=null?castsBean.getName():"");
                 ImageView imageView4 = (ImageView) viewHolder.getConvertView().findViewById(R.id.iv_cast);
-                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView4,null);
+                ImageUtils.setImgShowEP(mContext,url!=null?url:url_null,imageView4);
                 break;
         }
 

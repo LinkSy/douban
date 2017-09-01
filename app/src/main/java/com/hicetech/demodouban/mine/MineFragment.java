@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.hicetech.demodouban.R;
-import com.hicetech.demodouban.commonality.utils.ImageUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +22,7 @@ import butterknife.Unbinder;
 public class MineFragment extends Fragment {
 
 
-    @BindView(R.id.sdv)
-    SimpleDraweeView sdv;
+
     Unbinder unbinder;
     String url = "http://pic17.nipic.com/20111102/8732394_164338399113_2.jpg";
     @BindView(R.id.pb_movie)
@@ -44,7 +41,6 @@ public class MineFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageUtils.setImgShowEP(getContext(), url, null, sdv);
         spinKit.setVisibility(View.GONE);
     }
 

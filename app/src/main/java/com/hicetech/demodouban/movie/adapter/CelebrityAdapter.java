@@ -1,6 +1,5 @@
 package com.hicetech.demodouban.movie.adapter;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
@@ -8,7 +7,6 @@ import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.hicetech.demodouban.R;
 import com.hicetech.demodouban.commonality.utils.ImageUtils;
 import com.hicetech.demodouban.movie.module.Celebrity;
@@ -20,11 +18,11 @@ import static com.hicetech.demodouban.R.id.sdv_alt;
  */
 
 public class CelebrityAdapter extends BaseQuickAdapter<Celebrity.WorksBean,BaseViewHolder> {
-    Context mContext;
 
-    public CelebrityAdapter(Context context) {
+
+    public CelebrityAdapter() {
         super(R.layout.item_celebrity);
-        this.mContext = context;
+
     }
 
     @Override
@@ -36,11 +34,11 @@ public class CelebrityAdapter extends BaseQuickAdapter<Celebrity.WorksBean,BaseV
                 .setText(R.id.tv_collection_count,work.getSubject().getCollect_count()+"");
         String url = work.getSubject().getImages().getSmall();
         if (!TextUtils.isEmpty(url)){
-            SimpleDraweeView simpleDraweeView = (SimpleDraweeView) viewHolder.getConvertView().findViewById(sdv_alt);
-            ImageUtils.setImgShowEP(mContext,url,null,simpleDraweeView);
+            ImageView imageView = viewHolder.getView(sdv_alt);
+            ImageUtils.setImgShowEP(mContext,url,imageView);
         }
 
-        LinearLayout dot = (LinearLayout) viewHolder.getConvertView().findViewById(R.id.ll_dot);
+        LinearLayout dot = viewHolder.getView(R.id.ll_dot);
         float rank = (float) work.getSubject().getRating().getAverage();
         getRank(dot,rank);
 

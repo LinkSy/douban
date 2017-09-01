@@ -174,7 +174,7 @@ public abstract class BaseActivityTitle extends FragmentActivity {
 	 */
 	public boolean setRightTitleDataTXT(int rightTitle){
 
-		//TextView text=(TextView) findViewById(R.id.tv_right_title);
+		TextView text=(TextView) findViewById(R.id.tv_right_title);
 		if(null!=getRightTextView()){
 			ViewUtils.setTypefaceOverstriking(getRightTextView());
 			getRightTextView().setText(getResources().getString(rightTitle));
@@ -188,7 +188,7 @@ public abstract class BaseActivityTitle extends FragmentActivity {
 	 */
 	public boolean setRightTitleDataTXT(String rightTitle){
 
-		//TextView text=(TextView) findViewById(R.id.tv_right_title);
+		TextView text=(TextView) findViewById(R.id.tv_right_title);
 		if(null!=getRightTextView()){
 			ViewUtils.setTypefaceOverstriking(getRightTextView());
 			getRightTextView().setText(rightTitle);

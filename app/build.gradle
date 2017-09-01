@@ -43,8 +43,9 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
     compile 'com.github.anzaizai:EasyRefreshLayout:1.1.6'
     //图片加载框架
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.facebook.fresco:fresco:1.3.0'
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+    compile 'com.android.support:support-v4:25.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     //ProgressBar
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
     //事件工具
