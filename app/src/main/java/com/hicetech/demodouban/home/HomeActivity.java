@@ -1,4 +1,4 @@
-package com.hicetech.demodouban.Home;
+package com.hicetech.demodouban.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
     android:layout_marginEnd="16dp"
@@ -53,6 +54,7 @@
                     android:textColor="@color/movie_else_color"/>
 
                 <TextView
+                    tool:text="周星驰"
                     android:id="@+id/tv_director"
                     style="@style/Movie_else_Style"
                     android:layout_width="wrap_content"
@@ -73,6 +75,7 @@
                     android:textColor="@color/movie_else_color"/>
 
                 <TextView
+                    tool:text="周星驰"
                     android:id="@+id/tv_cast"
                     style="@style/Movie_else_Style"
                     android:layout_width="wrap_content"
