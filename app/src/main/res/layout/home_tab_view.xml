@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:id="@+id/home_tab"
+              android:background="@color/button_color"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rl_movie"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="10sp"
+                android:id="@+id/tv_tab_movie"
+                android:drawableTop="@drawable/home_tab_movie_selector"
+                android:text="@string/movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_weather"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="10sp"
+                android:id="@+id/tv_tab_weather"
+                android:drawableTop="@drawable/home_tab_weather_selector"
+                android:text="@string/weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_x"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="10sp"
+                android:id="@+id/tv_tab_x"
+                android:text="@string/x"
+                android:drawableTop="@drawable/home_tab_x_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_mine"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="10sp"
+                android:id="@+id/tv_tab_mine"
+                android:drawableTop="@drawable/home_tab_mine_selector"
+                android:text="@string/mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+</LinearLayout>

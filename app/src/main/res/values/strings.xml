@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">豆瓣BETA</string>
-
-
-
+    <string name="movie">电影</string>
+    <string name="weather">天气</string>
+    <string name="x">未知</string>
+    <string name="mine">我的</string>
 
 
 </resources>

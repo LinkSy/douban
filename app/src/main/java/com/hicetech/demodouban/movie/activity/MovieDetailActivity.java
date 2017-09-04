@@ -1,17 +1,14 @@
 package com.hicetech.demodouban.movie.activity;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -19,18 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.hicetech.demodouban.R;
+import com.hicetech.demodouban.commonality.base.BaseActivityTitle;
 import com.hicetech.demodouban.commonality.utils.ImageUtils;
+import com.hicetech.demodouban.commonality.utils.PopupWindowUtility;
 import com.hicetech.demodouban.movie.adapter.CastAdapter;
 import com.hicetech.demodouban.movie.module.Moviedetail;
 import com.hicetech.demodouban.network.NetWork;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 import rx.Observer;
 import rx.Subscription;
@@ -38,19 +36,14 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import static android.content.ContentValues.TAG;
-import static com.hicetech.demodouban.R.id.tv_top;
 
 /**
  * Created by Administrator on 2017/6/28.
  */
 
-public class MovieDetailActivity extends Activity {
+public class MovieDetailActivity extends BaseActivityTitle {
     private static String movie_id;//电影ID
     private static String movie_top;//电影排名
-    @BindView(tv_top)
-    TextView tvTop;//排名
-    @BindView(R.id.tv_movie_title)
-    TextView tvMovieTitle;//电影名
     @BindView(R.id.iv_movie)
     ImageView ivMovie;//电影海报
     @BindView(R.id.tv_director)
@@ -73,60 +66,68 @@ public class MovieDetailActivity extends Activity {
     TextView tvSummary;//简介
     @BindView(R.id.rv_movie_man)
     RecyclerView rvMovieMan;//导演和演员
-    private static ArrayList<Moviedetail.CastsBean> datas;
-    private static CastAdapter mAdapter;
-    @BindView(R.id.pb_movie)
-    SpinKitView pbMovie;
-    @BindView(R.id.ll_bg)
-    LinearLayout llBg;
+    private  ArrayList<Moviedetail.CastsBean> datas;
+    private  CastAdapter mAdapter;
     @BindView(R.id.sv_movie_detail)
     ScrollView svMovieDetail;
     @BindView(R.id.ll_item)
     LinearLayout llItem;
     @BindView(R.id.ll_movie_detail)
     LinearLayout llMovieDetail;
-    @BindView(R.id.ll_movie_title)
-    LinearLayout llMovieTitle;
-    @BindView(R.id.iv_movie_icon)
-    ImageView ivMovieIcon;
     private int[] random_color;
+    private List<Integer> list;
     //不同类型
     private static final int NULL = 0;
     private static final int DOUBLE = 1;
     private static final int LEFT = 2;
     private static final int RIGHT = 3;
+    private Dialog mDialog;
 
+    @Override
+    public void initEvent() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去除标题栏
-        setContentView(R.layout.activity_movie_detail);
-        ButterKnife.bind(this);
+    public void initView() {
+        mDialog = PopupWindowUtility.loading(this);
         //设置ImageView的动画
         AnimatedVectorDrawable mAnimatedVectorDrawable =  (AnimatedVectorDrawable) getResources().getDrawable(R.drawable.douban_animator);
-        ivMovieIcon.setImageDrawable(mAnimatedVectorDrawable);
+        setRightIMGAnimation(mAnimatedVectorDrawable);
         if(mAnimatedVectorDrawable!=null){
             mAnimatedVectorDrawable.start();
         }
 
+
         random_color = getResources().getIntArray(R.array.random_bg_color);
-        getBGcolor();
+        getBGColor();
         datas = new ArrayList<>();
         mAdapter = new CastAdapter(datas, getApplicationContext());
         rvMovieMan.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvMovieMan.setAdapter(mAdapter);
         movie_id = getIntent().getStringExtra("Movie_id");
         movie_top = getIntent().getStringExtra("Movie_top");
-        if (movie_top==null){
-            tvTop.setText("  ");
+
+        if (movie_top == null){
+            setLeftTopText(" ");
+
         }else {
-            tvTop.setText("NO." + movie_top);
+            setLeftTopText("NO." + movie_top);
+
         }
 
         getHttpData();
+    }
 
+    @Override
+    public int setView() {
+        return R.layout.activity_movie_detail;
     }
 
 
@@ -149,7 +150,7 @@ public class MovieDetailActivity extends Activity {
 
                     @Override
                     public void onNext(Moviedetail moviedetail) {
-                        tvMovieTitle.setText(moviedetail.getTitle());
+                        setLeftText(moviedetail.getTitle());
                         tvDirector.setText(moviedetail.getDirectors().get(0).getName());
                         tvActor.setText(getActor(moviedetail));
                         tvType.setText(getType(moviedetail));
@@ -165,7 +166,7 @@ public class MovieDetailActivity extends Activity {
                         ImageUtils.setImgShowEP(getApplicationContext(), url, ivMovie);
                         //设置适配器
                         mAdapter.setNewData(getCasts(moviedetail));
-                        llBg.setVisibility(View.GONE);
+                        mDialog.dismiss();
                         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -178,6 +179,8 @@ public class MovieDetailActivity extends Activity {
                     }
                 });
     }
+
+
 
     //将导演转换成演员
     public ArrayList getCasts(Moviedetail detail) {
@@ -355,11 +358,18 @@ public class MovieDetailActivity extends Activity {
     }
 
     //随机背景颜色
-    public void getBGcolor() {
+    public void getBGColor() {
         Random random = new Random();
         int color = random.nextInt(5);
+        list = new ArrayList<>();
         svMovieDetail.setBackgroundColor(random_color[color]);
-        llMovieTitle.setBackgroundColor(random_color[color]);
+
+        list.add(R.color.random_bg_color);
+        list.add(R.color.random_bg_color2);
+        list.add(R.color.random_bg_color3);
+        list.add(R.color.random_bg_color4);
+        list.add(R.color.random_bg_color5);
+        upThemeStyle(list.get(color));
     }
 
 }

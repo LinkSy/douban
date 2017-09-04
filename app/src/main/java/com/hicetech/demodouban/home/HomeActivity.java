@@ -6,36 +6,40 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.hicetech.demodouban.R;
 import com.hicetech.demodouban.commonality.utils.SystemStatusManager;
+import com.hicetech.demodouban.commonality.view.HomeTabView;
 import com.hicetech.demodouban.commonality.view.NoScrollViewPager;
 import com.hicetech.demodouban.forum.ForumFragment;
 import com.hicetech.demodouban.mine.MineFragment;
 import com.hicetech.demodouban.movie.MovieFragment;
+import com.hicetech.demodouban.weather.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import eu.long1.spacetablayout.SpaceTabLayout;
 
 /**
  * Created by Administrator on 2017/6/23.
  */
 
-public class HomeActivity extends FragmentActivity {
+public class HomeActivity extends FragmentActivity implements HomeTabView.HomeClick {
 
 
     @BindView(R.id.vp_home)
     NoScrollViewPager vpHome;
-    @BindView(R.id.spaceTabLayout)
-    SpaceTabLayout spaceTabLayout;
-
+    @BindView(R.id.home_tab)
+    HomeTabView mHomeTabView;
+    private MyAdapter mMyAdapter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,19 +56,40 @@ public class HomeActivity extends FragmentActivity {
         vpHome.setIsCanScroll(false);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MovieFragment());
+        fragments.add(new WeatherFragment());
         fragments.add(new ForumFragment());
         fragments.add(new MineFragment());
-        vpHome.setOffscreenPageLimit(3);//默认加载3个页面
-        spaceTabLayout.initialize(vpHome,getSupportFragmentManager()
-                ,fragments,savedInstanceState);
+        mMyAdapter = new MyAdapter(getSupportFragmentManager(),fragments);
+        vpHome.setAdapter(mMyAdapter);
+        vpHome.setOffscreenPageLimit(4);//默认加载4个页面
+        mHomeTabView.setOnHomeClick(this,0);
+
 
 
 
     }
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        spaceTabLayout.saveState(outState);
-        super.onSaveInstanceState(outState);
+    public void onHomeClick(View view) {
+        switch (view.getId()){
+            case R.id.rl_movie:
+                mHomeTabView.setSelectTab(0);
+                vpHome.setCurrentItem(0,false);
+                break;
+            case R.id.rl_weather:
+                mHomeTabView.setSelectTab(1);
+                vpHome.setCurrentItem(1,false);
+                break;
+            case R.id.rl_x:
+                mHomeTabView.setSelectTab(2);
+                vpHome.setCurrentItem(2,false);
+                break;
+            case R.id.rl_mine:
+                mHomeTabView.setSelectTab(3);
+                vpHome.setCurrentItem(3,false);
+                break;
+        }
+
+
     }
 
     //禁用返回键
@@ -86,4 +111,25 @@ public class HomeActivity extends FragmentActivity {
         }
         win.setAttributes(winParams);
     }
+
+    class MyAdapter extends FragmentPagerAdapter {
+        private List<Fragment> list;
+        public MyAdapter(FragmentManager fm, List<Fragment> list) {
+            super(fm);
+            this.list=list;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            return list.get(position);
+        }
+
+        @Override
+        public int getCount() {
+
+            return list.size();
+        }
+    }
+
 }
