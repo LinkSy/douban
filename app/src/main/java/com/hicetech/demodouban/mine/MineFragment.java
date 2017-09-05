@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.hicetech.demodouban.R;
 
 import butterknife.BindView;
@@ -27,8 +26,7 @@ public class MineFragment extends Fragment {
     String url = "http://pic17.nipic.com/20111102/8732394_164338399113_2.jpg";
     @BindView(R.id.pb_movie)
     ProgressBar pbMovie;
-    @BindView(R.id.spin_kit)
-    SpinKitView spinKit;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +39,7 @@ public class MineFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        spinKit.setVisibility(View.GONE);
+
     }
 
     @Override
