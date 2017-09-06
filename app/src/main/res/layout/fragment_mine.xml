@@ -10,13 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.Large.CubeGrid"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        app:SpinKit_Color="@color/colorAccent" />
-
+    <!--<com.hicetech.demodouban.commonality.view.CustomView2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+    <com.hicetech.demodouban.commonality.view.RadarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
