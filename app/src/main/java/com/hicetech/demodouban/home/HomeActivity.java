@@ -17,7 +17,7 @@ import com.hicetech.demodouban.R;
 import com.hicetech.demodouban.commonality.utils.SystemStatusManager;
 import com.hicetech.demodouban.commonality.view.HomeTabView;
 import com.hicetech.demodouban.commonality.view.NoScrollViewPager;
-import com.hicetech.demodouban.forum.ForumFragment;
+import com.hicetech.demodouban.unknown.UnknownFragment;
 import com.hicetech.demodouban.mine.MineFragment;
 import com.hicetech.demodouban.movie.MovieFragment;
 import com.hicetech.demodouban.weather.WeatherFragment;
@@ -57,7 +57,7 @@ public class HomeActivity extends FragmentActivity implements HomeTabView.HomeCl
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MovieFragment());
         fragments.add(new WeatherFragment());
-        fragments.add(new ForumFragment());
+        fragments.add(new UnknownFragment());
         fragments.add(new MineFragment());
         mMyAdapter = new MyAdapter(getSupportFragmentManager(),fragments);
         vpHome.setAdapter(mMyAdapter);
